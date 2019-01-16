@@ -3,7 +3,7 @@
   session_regenerate_id(true);
   if(isset($_SESSION['login'])==false){
     print'ログインされていません<br>';
-    print'<a href="../login/login.html">ログイン場面へ</a>';
+    print'<a href="../login/login.php">ログイン場面へ</a>';
     exit();
   }else{
     print $_SESSION['m_name'];
@@ -28,7 +28,7 @@
 		<?php
 
       require_once("../common/common.php");
-      require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+      require_once("../mysql_data/db_info.php");
       $dbh=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
       $dbh->query('SET NAMES utf8');
 
@@ -82,6 +82,8 @@
       fclose($file);
 
 		?>
+    <p>レスのダウンロードにカーソルを合わせて、<br>
+       右クリックから「名前をつけてリンク先を保存」でどうぞ。</p>
     <a href="res.csv">レスのダウンロード</a><br><br>
     <a href="download.php">日付選択へ</a><br><br>
     <a href="../main/keizi_top.php">トップへ戻る</a><br>

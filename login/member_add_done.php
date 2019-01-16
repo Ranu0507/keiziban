@@ -17,7 +17,7 @@
         $pass=$post['pass'];
         $email=$post['email'];
 
-        require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+        require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
 
         $s->query("INSERT INTO member VALUES (0,'$m_name','$pass','$email')");
@@ -26,7 +26,7 @@
         print $m_name;
         print'さんを追加しました。<br>';
         print'お手数ですが、ログイン画面よりログインしてから掲示板をご利用ください。<br>';
-        print'<a href="login.html">ログイン画面へ</a><br>';
+        print'<a href="login.php">ログイン画面へ</a><br>';
 
       }catch(Exception $e){
         print'ただいま障害により大変ご迷惑をおかけしております。';

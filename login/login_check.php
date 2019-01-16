@@ -8,7 +8,7 @@
     $pass=$post['pass'];
     $pass=md5($pass);
 
-    require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+    require_once("../mysql_data/db_info.php");
     $dbh=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
     $dbh->query("SET NAMES utf8");
 
@@ -22,7 +22,7 @@
 
     if($rec==false){
       print'登録名かパスワードが間違っています。<br>';
-      print'<a href="login.html">戻る</a>';
+      print'<a href="login.php">戻る</a>';
     }else{
       session_start();
       $_SESSION['login']=1;

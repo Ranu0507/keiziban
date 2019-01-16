@@ -3,7 +3,7 @@
   session_regenerate_id(true);
   if(isset($_SESSION['login'])==false){
     print'ログインされていません<br>';
-    print'<a href="../login/login.html">ログイン場面へ</a>';
+    print'<a href="../login/login.php">ログイン場面へ</a>';
     exit();
   }else{
     print $_SESSION['m_name'];
@@ -37,7 +37,7 @@
     <?php
 
       try{
-        require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+        require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
 
         $re=$s->query("SELECT * FROM sure");
@@ -62,7 +62,7 @@
     <hr>
     <h2>スレッド作成</h2>
     <p>新しいスレッドを作るときはこちらでどうぞ</p>
-    <form method="GET" action="keizi_branch.php">
+    <form method="GET" action="keizi_sure.php">
       <p>新しく作るスレッドのタイトル</p>
       <input type="text" name="sure" size="50">
       <input type="submit" value="作成">

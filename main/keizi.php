@@ -3,7 +3,7 @@
   session_regenerate_id(true);
   if(isset($_SESSION['login'])==false){
     print'ログインされていません<br>';
-    print'<a href="../login/login.html">ログイン場面へ</a>';
+    print'<a href="../login/login.php">ログイン場面へ</a>';
     exit();
   }else{
     print $_SESSION['m_name'];
@@ -29,7 +29,7 @@
     <?php
 
       try{
-        require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+        require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
         $m_name=$_SESSION['m_name'];
 
@@ -74,7 +74,7 @@
         print'<hr>';
         print $sure_com;
         print'に、メッセージを書くときはこちらからどうぞ';
-        print'<form method="POST" action="keizi_branch.php" enctype="multipart/form-data">';
+        print'<form method="POST" action="keizi_resu.php" enctype="multipart/form-data">';
         print'名前<br>';
         print'<input type="text" name="name" value="';
         print $m_name;

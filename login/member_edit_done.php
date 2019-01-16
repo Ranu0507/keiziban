@@ -3,7 +3,7 @@
   session_regenerate_id(true);
   if(isset($_SESSION['login'])==false){
     print'ログインされていません<br>';
-    print'<a href="../login/login.html">ログイン場面へ</a>';
+    print'<a href="../login/login.php">ログイン場面へ</a>';
     exit();
   }else{
     print $_SESSION['m_name'];
@@ -37,7 +37,7 @@
         $pass=$post['pass'];
         $email=$post['email'];
 
-        require_once("../../../../xampp/mysql/mysql_data/db_info.php");
+        require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
 
         $s->query("UPDATE member SET m_name='$m_name',pass='$pass',email='$email'
