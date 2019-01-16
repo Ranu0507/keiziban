@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body{background-color: silver;}
+
+h1{background-color: palegoldenrod;
+	 font-family: 'Sawarabi Mincho', sans-serif;}
+
+h2{background-color: palegoldenrod;
+	 font-family: 'Sawarabi Mincho', sans-serif;}
+
+/*スマートフォン用*/
+@@media screen and(max-width: 599px) {
+	.col{width:auto;}
+	.row{padding: 0 8px;}
+}
