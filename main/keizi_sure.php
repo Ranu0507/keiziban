@@ -12,10 +12,8 @@
   $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
   $id=$_SESSION['id'];
 
-  //スレの作成。
   $sure=isset($_GET['sure'])? htmlspecialchars($_GET['sure']):null;
 
-  //elseだとレスの書き込みの時にも反応するのでわけています。
   if($sure==''){
     header('Location: keizi_top.php');
     exit();
