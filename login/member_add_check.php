@@ -14,6 +14,7 @@
       $m_name=$post['m_name'];
       $pass=$post['pass'];
       $pass2=$post['pass2'];
+
       $email=$post['email'];
 
       if($m_name==''){
@@ -46,7 +47,6 @@
         print'<input type="button" onclick="history.back()" value="戻る">';
         print'</form>';
       }else{
-        $pass=md5($pass);
         print'以下の情報でよろしいですか？よろしければ「OK」を';
         print'修正する場合は「戻る」をクリックしてください。';
         print'<form method="post" action="member_add_done.php">';

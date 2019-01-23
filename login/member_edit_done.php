@@ -32,16 +32,30 @@
         require_once('../common/common.php');
         $post=sanitize($_POST);
 
-        $id=$_POST['id'];
+        $id=$_SESSION['id'];
         $m_name=$post['m_name'];
         $pass=$post['pass'];
         $email=$post['email'];
 
+        $hash=password_hash($_POST['pass'],PASSWORD_BCRYPT);
+
         require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
 
+        $sql="UPDATE member SET m_name=:m_name,pass=:pass,email=:email
+              WHERE id=$id";
+        $stmt=$s->prepare($sql);
+        $stmt->bindValue(':m_name',$_REQUEST['m_name'],PDO::PARAM_STR);
+        $stmt->bindValue(':pass',$hash,PDO::PARAM_STR);
+        $stmt->bindValue(':email',$_REQUEST['email'],PDO::PARAM_STR);
+        $stmt->execute();
+
+
+        /*require_once("../mysql_data/db_info.php");
+        $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
+
         $s->query("UPDATE member SET m_name='$m_name',pass='$pass',email='$email'
-                   WHERE id='$id'");
+                   WHERE id='$id'");*/
 
       }catch(Exception $e){
         print'ただいま障害により大変ご迷惑をおかけしております。';

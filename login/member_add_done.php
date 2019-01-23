@@ -13,15 +13,24 @@
         require_once('../common/common.php');
         $post=sanitize($_POST);
 
-        $m_name=$post['m_name'];
-        $pass=$post['pass'];
-        $email=$post['email'];
+      //  $m_name=$post['m_name'];
+        //$pass=$post['pass'];
+        //$email=$post['email'];
+
+        $hash=password_hash($_POST['pass'],PASSWORD_BCRYPT);
 
         require_once("../mysql_data/db_info.php");
         $s=new PDO("mysql:host=$SERV;dbname=$DBNAME",$USER,$PASS);
 
-        $s->query("INSERT INTO member VALUES (0,'$m_name','$pass','$email')");
+        $sql="INSERT INTO member(id,m_name,pass,email)
+              VALUES('',:m_name,:pass,:email)";
+        $stmt=$s->prepare($sql);
+        $stmt->bindValue(':m_name',$_REQUEST['m_name'],PDO::PARAM_STR);
+        $stmt->bindValue(':pass',$hash,PDO::PARAM_STR);
+        $stmt->bindValue(':email',$_REQUEST['email'],PDO::PARAM_STR);
+        $stmt->execute();
 
+        $m_name=$_REQUEST['m_name'];
         print'登録ありがとうございます。';
         print $m_name;
         print'さんを追加しました。<br>';

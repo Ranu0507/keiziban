@@ -66,7 +66,6 @@
         print'<input type="button" onclick="history.back()" value="戻る">';
         print'</form>';
       }else{
-        $pass=md5($pass);
         print'以下の情報でよろしいですか？よろしければ「OK」を';
         print'修正する場合は「戻る」をクリックしてください。';
         print'<form method="post" action="member_edit_done.php">';
